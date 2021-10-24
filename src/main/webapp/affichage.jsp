@@ -7,12 +7,16 @@
 	<%
 	List<Etudiant> et = (ArrayList<Etudiant>) request.getAttribute("etudiants");
 	
-	for(Etudiant etudiant : et){
-		out.println("<li>" + etudiant.getUsername());
-		out.println("<br>");
-		out.println(etudiant.getAge());
-		out.println("</li>");
-	}
 	%>
+	<% for(Etudiant etudiant : et){ %>
+		<li><%=etudiant.getUsername() %> - <%=etudiant.getAge() %>
+		<form method="post" action="Remove" style="display: inline;">
+			<input type="hidden" value="<%=etudiant.getCin() %>" name="cin" />	
+			<button>
+				supprimer
+			</button>
+		</form>
+		
+	<%} %>
 </body>
 </html>
